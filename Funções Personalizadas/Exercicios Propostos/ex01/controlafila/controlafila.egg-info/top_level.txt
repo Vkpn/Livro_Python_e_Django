@@ -1,0 +1,5 @@
+atender
+incluir
+limpatela
+menu
+verificafila

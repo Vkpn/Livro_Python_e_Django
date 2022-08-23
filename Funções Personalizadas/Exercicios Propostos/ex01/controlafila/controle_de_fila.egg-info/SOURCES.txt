@@ -1,0 +1,11 @@
+README.txt
+atender.py
+incluir.py
+limpatela.py
+menu.py
+setup.py
+verificafila.py
+controle_de_fila.egg-info/PKG-INFO
+controle_de_fila.egg-info/SOURCES.txt
+controle_de_fila.egg-info/dependency_links.txt
+controle_de_fila.egg-info/top_level.txt

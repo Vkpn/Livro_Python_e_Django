@@ -1,0 +1,7 @@
+print('.....A.....')
+print('....AAA....')
+print('...AAAAA...')
+print('..AAAAAAA..')
+print('.AAAAAAAAA.')
+print('.....A.....')
+print('WWWWWWWWWWW')
