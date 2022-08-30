@@ -115,7 +115,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
@@ -127,8 +126,6 @@ STATICFILES_DIR = (os.path.join(BASE_DIR, 'static'),)
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
@@ -159,3 +156,7 @@ LOGGING = {
         },
     },
 }
+
+EMAIL_FALE_CONOSCO = 'victoraso10@hotmail.com'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
