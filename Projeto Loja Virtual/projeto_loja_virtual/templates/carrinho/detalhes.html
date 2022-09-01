@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block titulo %}
+    Seu carrinho de compras
+{% endblock %}
+
+{% block conteudo %}
+    <table>
+        <thead>
+            <tr>
+                <th>Imagem</th>
+                <th>Produto</th>
+                <th>Quantidade</th>
+                <th>Remover</th>
+                <th>Preço unitário</th>
+                <th>Sub-total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in carrinho %}
+                {% with produto=item.produto %}
+                    <tr>
+                        <td>
+                            <a href="{{ produto.get_absolute_url }}">
+                                <img src="{% if produto.imagem %}
+                                            {{ produto.imagem.url }}
+                                          {% else %}
+                                            {%  static 'img/default.jpg' %}
+                                          {% endif %}"
+                                width="50px" height="50px">
+                            </a>
+                        </td>
+                        <td>{{ produto.nome }}</td>
+                        <td>{{ item.quantidade }}</td>
+                        <td><a href="{% url 'carrinho:remover_do_carrinho' produto.id %}">Remover</a></td>
+                        <td>{{ item.preco }}</td>
+                        <td>{{ item.subtotal}}</td>
+                    </tr>
+                {% endwith %}
+            {% endfor %}
+            <tr>
+                <td>Total geral:</td>
+                <td colspan="4"></td>
+                <td>R$ {{ carrinho.get_total_geral }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <p class="text-right">
+        <a href="{% url 'main:listar_produtos' %}" class="button-light">Comprar mais produtos</a>
+        <a href="#" class="button">Finalizar</a>
+    </p>
+{% endblock %}

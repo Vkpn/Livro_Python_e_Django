@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block titulo %}
+    {% if categoria %}
+        {{ categoria.nome }}
+    {% else %}
+        Produtos
+    {% endif %}
+{% endblock %}
+
+{% block conteudo %}
+   <div class="container">
+      <div class="row" style="margin-top: 6%">
+        <div class="col-sm-8 ">
+          <div class="loja-item">
+              <div class="row">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="col-md-6 text-right">
+                            <img src="{% if produto.imagem %}
+                                         {{ produto.imagem.url }}
+                                      {% else %}
+                                         {% static 'img/default.jpg' %}
+                                      {% endif %}"
+                                 alt="Imagem de {{ produto.nome }}"
+                                 style="height: 170px; width: auto"
+                            >
+                        </div>
+                        <div class="col-md-6" style="padding-left: 20px">
+                            <h3>{{ produto.nome }}</h3>
+                            <h6><a href="{{ produto.categoria.get_absolute_url }}">{{ produto.categoria }}</a></h6>
+                            <p class="text-muted">R$ {{ produto.preco }}</p>
+                            <!-- *!* -->
+                            <form action="{% url 'carrinho:adicionar_ao_carrinho' produto.id %}" method="post">
+                                {{ form_produto_carrinho }}
+                                {% csrf_token %}
+                                <input type="submit" value="Adicionar ao carrinho">
+                            </form>
+                            <!-- *!* -->
+                            <p>{{ produto.descricao|safe|linebreaksbr }}</p>
+                        </div>
+                    </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}
