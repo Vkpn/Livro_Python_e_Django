@@ -47,6 +47,6 @@
     </table>
     <p class="text-right">
         <a href="{% url 'main:listar_produtos' %}" class="button-light">Comprar mais produtos</a>
-        <a href="#" class="button">Finalizar</a>
+        <a href="{% url 'pedidos:criar_pedido' %}" class="btn btn-secondary button">Finalizar</a>
     </p>
 {% endblock %}

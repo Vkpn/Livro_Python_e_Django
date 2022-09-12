@@ -20,14 +20,14 @@ class Pedido(models.Model):
         ordering = ('-data_criacao',)
 
     def __str__(self):
-        return 'Pedido #'+str(self.id)
+        return 'Pedido #' + str(self.id)
 
     def get_total_geral(self):
         resultado = Decimal(0.0)
         for item in self.itens.all():
             subtotal = Decimal(item['quantidade']) * Decimal(item['preco'])
             resultado = resultado + subtotal
-        return resultado
+        return float(resultado)
 
 
 class ItemPedido(models.Model):
@@ -40,4 +40,6 @@ class ItemPedido(models.Model):
         return 'Pedido #' + str(self.id)
 
     def get_subtotal(self):
-        return self.preco * self.quantidade
+        subtotal = self.preco * self.quantidade
+        return float(subtotal)
+

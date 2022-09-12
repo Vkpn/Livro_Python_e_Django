@@ -42,8 +42,8 @@ class Carrinho:
         for produto in produtos:
             carrinho[str(produto.id)]['produto']=produto
         for item in carrinho.values():
-            item['preco']=Decimal(item['preco'])
-            item['subtotal']= Decimal(item['preco'])* Decimal(item['quantidade'])
+            item['preco'] = str(item['preco'])
+            item['subtotal'] = Decimal(item['preco']) * Decimal(item['quantidade'])
             yield item
 
     def __len__(self):

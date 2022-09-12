@@ -1,3 +1,5 @@
+import json
+from decimal import Decimal
 from django.db import models
 from django.urls import reverse
 
@@ -36,8 +38,14 @@ class Produto(models.Model):
         ordering = ('nome',)
         index_together = (('id', 'slug'),)
 
+    class DecimalEncoder(json.JSONEncoder):
+        def default(self, obj):
+            if isinstance(obj, Decimal):
+                return str(obj)
+            return json.JSONEncoder.default(self, obj)
+
     def __str__(self):
-        return self.nome
+        return str(self.nome)
 
     def get_absolute_url(self):
         return reverse('main:detalhes_produto', args=[self.slug])

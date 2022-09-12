@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block titulo %}
+  Obrigado pela compra!
+{% endblock %}
+
+{% block conteudo %}
+  <h1>Obrigado pela compra!</h1>
+  <p>
+    Seu pedido foi concluído com sucesso.
+    O número do pedido é <strong>{{ pedido.id }}</strong>.
+  </p>
+  <p class="text-left"><a href="{% url 'main:listar_produtos' %}" class="btn btn-primary button_light">Retornar a loja</a>
+  </p>
+{% endblock %}
